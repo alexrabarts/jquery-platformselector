@@ -37,7 +37,7 @@ functionality.
 For these reasons, it is recommended that this plugin <em>only</em> be used for
 non-critical functionality and minor CSS tweaks (a few pixels here and there)
 If you are experiencing a major CSS display bug then you are much better off
-finding the root source of that problem than patching it with this plugin.
+finding the root cause of that problem than patching it with this plugin.
 
 ### Examples of Classes Added
 
