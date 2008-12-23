@@ -62,10 +62,10 @@ you to target platforms at various levels of granularity.  The class
   <dd><code>win js gecko gecko_20080404 firefox firefox_2_0_0_14 firefox_2 gecko_1_8_1_14</code></dd>
 
   <dt>Safari 3.2 / Windows XP</dt>
-  <dd><code>win js applewebkit applewebkit_525_27_1 applewebkit_525 version version_3_2_1 version_3 safari safari_525_27_1 safari_525</code></dd>
+  <dd><code>win js applewebkit applewebkit_525_27_1 applewebkit_525 safari safari_3_2_1 safari_3 safari_525_27_1 safari_525</code></dd>
 
   <dt>Chrome 1.0 / Windows XP</dt>
-  <dd><code>win js applewebkit applewebkit_525_19 applewebkit_525 chrome chrome_1_0_154_36 chrome_1 safari safari_525_19 safari_525</code></dd>
+  <dd><code>win js applewebkit applewebkit_525_19 applewebkit_525 chrome chrome_1_0_154_36 chrome_1</code></dd>
 </dl>
 
 # Licensing

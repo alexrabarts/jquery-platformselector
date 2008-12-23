@@ -47,6 +47,20 @@
     classNames  = classNames.concat([agent, agent + '_' + fullVersion, agent + '_' + majorVersion]);
   });
 
+  // Safari splits the user agent into Safairi/<build> and Version/<version> so rename Version -> Safari
+  if ($.inArray('safari', classNames) && $.inArray('version', classNames)) {
+    classNames = $.map(classNames, function (c) {
+      return c.replace('version', 'safari');
+    });
+  }
+
+  // Chrome incorrectly identifies itself as Safari
+  if ($.inArray('chrome', classNames)) {
+    classNames = $.map(classNames, function (c) {
+      return c.match(/^safari/) ? null : c;
+    });
+  }
+
   var engineVersion = (
     (ua.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [0,'0'])[1] // From jQuery 1.2.6
   ).replace(/\./g, '_');
