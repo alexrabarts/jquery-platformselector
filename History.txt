@@ -1,0 +1,7 @@
+=== 0.1.1 / 2008-12-23
+
+Bugfix: Safari now has the safari class
+
+=== 0.1.0 / 2008-12-23
+ 
+* Initial release
