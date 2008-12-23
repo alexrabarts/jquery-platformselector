@@ -27,7 +27,11 @@
       $(function () { $('#main').html($('body')[0].className); });
 
       test('Body should have JavaScript class', function () {
-        ok($('body').hasClass('js'), 'Body has JavaScript class applied');
+        stop();
+        setTimeout(function () {
+          ok($('body').hasClass('js'), 'Body has JavaScript class applied');
+          start();
+        }, 200); // Test requires some time for the DOM to update in some browsers (e.g. Opera)
       });
     })(jQuery);
     //]]>
