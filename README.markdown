@@ -1,8 +1,9 @@
 # platformSelector: a jQuery plugin
 
 platformSelector is a simple jQuery plugin that adds classes to the body
-element representing the browser's environment.  It adds classes for browser
-type, browser version, operating system, rendering engine and JS-enabled.
+element representing the browser's environment.  It adds classes  parsed
+from the user agent string, which generally represents informtaiton such
+as browser type, browser version, operating system and rendering engine.
 
 ## Usage
 
@@ -15,7 +16,7 @@ they upgrade, perhaps :-).  You could achieve this with the following styles:
 
   <pre>
     #upgrade { display: none; }
-    .ie6 #upgrade { display: block; }
+    .ie_6 #upgrade { display: block; }
   </pre>
 
 The plugin is also useful for self-documenting CSS hacks. e.g:
@@ -29,85 +30,43 @@ The plugin is also useful for self-documenting CSS hacks. e.g:
 
 Obviously the plugin requires JavaScript be enabled in order to work.  Another
 limitation is that the implementation relies on parsing of the user agent
-string to determine the classes to add.  These limitations mean that the plugin
-is not guaranteed to work in all cases.  Additionally, new browser versions or
-platforms may break existing functionality.
+string.  These limitations mean that the plugin is not guaranteed to work in
+all cases.  Additionally, new browser versions or platforms may break existing
+functionality.
 
 For these reasons, it is recommended that this plugin <em>only</em> be used for
 non-critical functionality and minor CSS tweaks (a few pixels here and there)
 If you are experiencing a major CSS display bug then you are much better off
-finding the root source of that problem than patching it with this plugin if
-at all possible.
+finding the root source of that problem than patching it with this plugin.
 
-### Classes added to <code>body</code>
+### Examples of Classes Added
 
-#### Browsers
-
-<dl>
-  <dt><code>ie ie&lt;version&gt;</code></dt>
-  <dd>Microsoft Internet Explorer</dd>
-
-  <dt><code>ff ff&lt;version&gt;</code></dt>
-  <dd>Mozilla Firefox</dd>
-
-  <dt><code>safari safari&lt;version&gt;</code></dt>
-  <dd>Apple Safari</dd>
-
-  <dt><code>safari iphone</code></dt>
-  <dd>Apple iPhone</dd>
-
-  <dt><code>opera opera&lt;version&gt;</code></dt>
-  <dd>Opera</dd>
-</dl>
-
-#### Operating Systems
+The plugin attempts to parse both major and full version numbers, which allows
+you to target platforms at various levels of granularity.  The class
+<code>js</code> is also always added, indicating that JavaScript is enabled.
 
 <dl>
-  <dt><code>win</code></dt>
-  <dd>Microsoft Windows</dd>
+  <dt>Firefox 3.0.4 / Mac OSX Leopard</dt>
+  <dd><code>mac js gecko gecko_2008102920 firefox firefox_3_0_4 firefox_3 gecko_1_9_0_4</code></dd>
 
-  <dt><code>mac</code></dt>
-  <dd>Apple Macintosh</dd>
+  <dt>Safari 3.2 / Mac OSX Leopard</dt>
+  <dd><code>mac js applewebkit applewebkit_525_26_2 applewebkit_525 version version_3_2 version_3 safari safari_525_26_12 safari_525</code></dd>
 
-  <dt><code>linux</code></dt>
-  <dd>Linux and UNIX variants</dd>
+  <dt>Microsoft Internet Explorer 6 / Windows XP</dt>
+  <dd><code>ie ie_6 win js</code></dd>
+
+  <dt>Microsoft Internet Explorer 7 / Windows XP</dt>
+  <dd><code>ie ie_7 win js</code></dd>
+
+  <dt>Firefox 2.0 / Windows XMP</dt>
+  <dd><code>win js gecko gecko_20080404 firefox firefox_2_0_0_14 firefox_2 gecko_1_8_1_14</code></dd>
+
+  <dt>Safari 3.2 / Windows XP</dt>
+  <dd><code>win js applewebkit applewebkit_525_27_1 applewebkit_525 version version_3_2_1 version_3 safari safari_525_27_1 safari_525</code></dd>
+
+  <dt>Chrome 1.0 / Windows XP</dt>
+  <dd><code>win js applewebkit applewebkit_525_19 applewebkit_525 chrome chrome_1_0_154_36 chrome_1 safari safari_525_19 safari_525</code></dd>
 </dl>
-
-#### Rendering Engine
-
-<dl>
-  <dt><code>trident trident&lt;version&gt;</code></dt>
-  <dd>Trident (used by Internet Explorer)</dd>
-
-  <dt><code>gecko gecko&lt;version&gt;</code></dt>
-  <dd>Gecko (used by Firefox)</dd>
-
-  <dt><code>webkit webkit&lt;version&gt;</code></dt>
-  <dd>Webkit (used by Safari)</dd>
-
-  <dt><code>opera opera&lt;version&gt;</code></dt>
-  <dd>Opera</dd>
-</dl>
-
-#### JavaScript Enabled
-
-The class <code>js</code> is added when the plugin executes.
-
-## Tested On
-
-  * Firefox 2.0.0.4 / Windows 2000
-  * Firefox 2.0.0.19 / Ubuntu 8.04 LTS (Hardy Heron)
-  * Firefox 3.1 / Windows XP
-  * Firefox 1.5 / Windows 2000
-  * Opera 10.00 / Ubuntu 8.04 LTS (Hardy Heron)
-  * MSIE 6.0 / Windows XP
-  * MSIE 7.0 / Windows XP
-  * MSIE 8.0 / Windows XP
-  * Safari 3.2.1 / Windows XP
-  * Opera 9.63 / Windows XP
-  * Opera 9.63 / Debian Testing (Lenny)
-  * Opera 8.54 / Windows XP
-  * Opera 10.00 / Windows XP
 
 # Licensing
 

@@ -22,40 +22,56 @@
   function t(str, test) { return str.indexOf(test) !== -1; }
   function uaIs(test) { return t(ua, test); }
 
-  var ua   = navigator.userAgent.toLowerCase();
+  var ua = navigator.userAgent.toLowerCase();
 
-  var browser =
-    (!uaIs('opera') && !uaIs('webtv') && (/msie (\d)/.test(ua))) ? 'ie ie' + RegExp.$1   :
-    /opera[\/\s](\d\d?)/.test(ua)                          ? 'opera opera' + RegExp.$1   :
-    (/safari/.test(ua) && (/iphone/.test(ua)))             ? 'safari iphone'             :
-    (/safari/.test(ua) && (/version\/(\d)/.test(ua)))      ? 'safari safari' + RegExp.$1 :
-    uaIs('safari/')                                        ? 'safari'                    :
-    /firefox.(\d)/.test(ua)                                ? 'ff ff' + RegExp.$1            : '';
+  var ie = (!uaIs('opera') && !uaIs('webtv') && (/msie (\d+)/.test(ua))) ? 'ie ie_' + RegExp.$1 : '';
 
   var os =
     (uaIs('x11') || uaIs('linux')) ? 'linux' :
     uaIs('mac')                    ? 'mac'   :
     uaIs('win')                    ? 'win'   : '';
 
-  var engine =
-    t(browser, 'ie')     ? 'trident' :
-    t(browser, 'opera')  ? 'opera'   :
-    t(browser, 'safari') ? 'webkit'  :
-    t(browser, 'ff')     ? 'gecko'   :
-    uaIs('trident')      ? 'trident' :
-    uaIs('opera')        ? 'opera'   :
-    uaIs('webkit')       ? 'webkit'  :
-    uaIs('gecko')        ? 'gecko'   : '';
+  var classNames = [ie, os, 'js'];
 
-  var engine_version = (
+  var agents = ua.split(' ');
+
+  $.each(agents, function () {
+    if (!this.match(/(\w+)\/([^\s]+)/)) {
+      return;
+    }
+
+    var agent   = RegExp.$1;
+    var fullVersion = RegExp.$2.replace(/[\/\.]/g, '_');
+    var majorVersion = fullVersion.replace(/_.*/, '');
+
+    classNames  = classNames.concat([agent, agent + '_' + fullVersion, agent + '_' + majorVersion]);
+  });
+
+  var engineVersion = (
     (ua.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [0,'0'])[1] // From jQuery 1.2.6
   ).replace(/\./g, '_');
 
-  var classNames = $.unique([browser, os, engine, engine + engine_version, 'js']).join(' ');
+  $.each(['opera', 'applewebkit', 'gecko'], function () {
+    if ($.inArray(String(this), classNames) !== -1) {
+      classNames.push(this + '_' + engineVersion);
+      return false;
+    }
+  });
+
+  // Deduplicate.  $.unique is only for DOM elements :-(
+  var seen = {};
+  classNames = $.map(classNames, function (c) {
+    if (seen[c] || c.match(/^mozilla/)) { // Mozilla so abused it's pretty much useless
+      return null;
+    } else {
+      seen[c] = true;
+      return c;
+    }
+  }).join(' ');
 
   var html = $('html');
   html.addClass(classNames); // Add to the html element now to avoid any FOUC
-  // Move the classes to the body on dom ready since class is not valid on the html element
+
   $(function () {
     html.removeAttr('class');
     $('body').addClass(classNames);
