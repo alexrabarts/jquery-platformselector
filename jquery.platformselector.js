@@ -15,7 +15,7 @@
  *
  * @author   Alex Rabarts (alexrabarts -at- gmail -dawt- com)
  * @requires jQuery v1.2 or later
- * @version  0.1
+ * @version  0.1.1
  */
 
 (function ($) {
@@ -48,14 +48,14 @@
   });
 
   // Safari splits the user agent into Safairi/<build> and Version/<version> so rename Version -> Safari
-  if ($.inArray('safari', classNames) && $.inArray('version', classNames)) {
+  if ($.inArray('safari', classNames) !== -1 && $.inArray('version', classNames) !== -1) {
     classNames = $.map(classNames, function (c) {
       return c.replace('version', 'safari');
     });
   }
 
   // Chrome incorrectly identifies itself as Safari
-  if ($.inArray('chrome', classNames)) {
+  if ($.inArray('chrome', classNames) !== -1) {
     classNames = $.map(classNames, function (c) {
       return c.match(/^safari/) ? null : c;
     });

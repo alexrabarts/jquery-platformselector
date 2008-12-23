@@ -26,7 +26,7 @@ The plugin is also useful for self-documenting CSS hacks. e.g:
     .ie .panel { margin-left: -5px }
   </pre>
   
-### Notes on implementation
+### Notes on Implementation
 
 Obviously the plugin requires JavaScript be enabled in order to work.  Another
 limitation is that the implementation relies on parsing of the user agent
@@ -50,7 +50,7 @@ you to target platforms at various levels of granularity.  The class
   <dd><code>mac js gecko gecko_2008102920 firefox firefox_3_0_4 firefox_3 gecko_1_9_0_4</code></dd>
 
   <dt>Safari 3.2 / Mac OSX Leopard</dt>
-  <dd><code>mac js applewebkit applewebkit_525_26_2 applewebkit_525 version version_3_2 version_3 safari safari_525_26_12 safari_525</code></dd>
+  <dd><code>mac js applewebkit applewebkit_525_26_2 applewebkit_525 safari safari_3_2 safari_3 safari_525_26_12 safari_525</code></dd>
 
   <dt>Microsoft Internet Explorer 6 / Windows XP</dt>
   <dd><code>ie ie_6 win js</code></dd>
