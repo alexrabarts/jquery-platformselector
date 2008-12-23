@@ -93,6 +93,22 @@ at all possible.
 
 The class <code>js</code> is added when the plugin executes.
 
+## Tested On
+
+  * Firefox 2.0.0.4 / Windows 2000
+  * Firefox 2.0.0.19 / Ubuntu 8.04 LTS (Hardy Heron)
+  * Firefox 3.1 / Windows XP
+  * Firefox 1.5 / Windows 2000
+  * Opera 10.00 / Ubuntu 8.04 LTS (Hardy Heron)
+  * MSIE 6.0 / Windows XP
+  * MSIE 7.0 / Windows XP
+  * MSIE 8.0 / Windows XP
+  * Safari 3.2.1 / Windows XP
+  * Opera 9.63 / Windows XP
+  * Opera 9.63 / Debian Testing (Lenny)
+  * Opera 8.54 / Windows XP
+  * Opera 10.00 / Windows XP
+
 # Licensing
 
 Licensed under the MIT:
