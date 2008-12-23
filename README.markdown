@@ -58,7 +58,7 @@ you to target platforms at various levels of granularity.  The class
   <dt>Microsoft Internet Explorer 7 / Windows XP</dt>
   <dd><code>ie ie_7 win js</code></dd>
 
-  <dt>Firefox 2.0 / Windows XMP</dt>
+  <dt>Firefox 2.0 / Windows XP</dt>
   <dd><code>win js gecko gecko_20080404 firefox firefox_2_0_0_14 firefox_2 gecko_1_8_1_14</code></dd>
 
   <dt>Safari 3.2 / Windows XP</dt>
