@@ -14,17 +14,17 @@ Once installed, you can access the classes via CSS or a script.  For example,
 you might want to display some information only to your IE6 users (requesting
 they upgrade, perhaps :-).  You could achieve this with the following styles:
 
-  <pre>
-    #upgrade { display: none; }
-    .ie_6 #upgrade { display: block; }
-  </pre>
+<pre>
+  #upgrade { display: none; }
+  .ie_6 #upgrade { display: block; }
+</pre>
 
 The plugin is also useful for self-documenting CSS hacks. e.g:
 
-  <pre>
-    .panel { margin-left: 0; }
-    .ie .panel { margin-left: -5px }
-  </pre>
+<pre>
+  .panel { margin-left: 0; }
+  .ie .panel { margin-left: -5px }
+</pre>
   
 ### Notes on Implementation
 
