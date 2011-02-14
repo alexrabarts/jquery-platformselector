@@ -44,6 +44,7 @@ finding the root cause of that problem than patching it with this plugin.
 The plugin attempts to parse both major and full version numbers, which allows
 you to target platforms at various levels of granularity.  The class
 <code>js</code> is also always added, indicating that JavaScript is enabled.
+The class <code>mobile</code> is added when a mobile device is detected.
 
 <dl>
   <dt>Firefox 3.0.4 / Mac OSX Leopard</dt>
