@@ -11,7 +11,7 @@
  * Licensed under the MIT:
  * http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright (c) 2008 Stateless Systems (http://statelesssystems.com)
+ * Copyright (c) 2011 Stateless Systems (http://statelesssystems.com)
  *
  * @author   Alex Rabarts (alexrabarts -at- gmail -dawt- com)
  * @requires jQuery v1.2 or later
@@ -42,8 +42,8 @@
 
         var mobile = false;
 
-        $.each(knownMobileDevices, function (index, device) {
-          if (uaIs(device)) {
+        $.each(knownMobileDevices, function () {
+          if (uaIs(this)) {
             mobile = true;
             return false;
           }
@@ -54,7 +54,11 @@
 
       var ua = options.userAgent.toLowerCase();
 
-      var ie = (!uaIs('opera') && !uaIs('webtv') && (/msie (\d+)/.test(ua))) ? 'ie ie_' + RegExp.$1 : '';
+      var ie = (
+        !uaIs('opera') &&
+        !uaIs('webtv') &&
+        (/msie (\d+)/.test(ua))
+      ) ? 'ie ie_' + RegExp.$1 : '';
 
       var os =
         uaIs('ipod')                   ? 'ios ipod'   :
@@ -80,17 +84,22 @@
           return;
         }
 
-        var agent   = RegExp.$1;
-        var fullVersion = RegExp.$2.replace(/[\/\.]/g, '_');
+        var agent        = RegExp.$1;
+        var fullVersion  = RegExp.$2.replace(/[\/\.]/g, '_');
         var majorVersion = fullVersion.replace(/_.*/, '');
 
-        classNames  = classNames.concat([agent, agent + '_' + fullVersion, agent + '_' + majorVersion]);
+        classNames = classNames.concat(
+          [agent, agent + '_' + fullVersion, agent + '_' + majorVersion]
+        );
       });
 
-      // Safari and Opera split the user agent into Safairi/<build> and
+      // Safari and Opera split the user agent into Safari/<build> and
       // Version/<version> so rename Version -> (Safari|Opera)
       $.each(['safari', 'opera'], function (index, browser) {
-        if ($.inArray(browser, classNames) !== -1 && $.inArray('version', classNames) !== -1) {
+        if (
+          $.inArray(browser, classNames) !== -1 &&
+          $.inArray('version', classNames) !== -1
+        ) {
           classNames = $.map(classNames, function (c) {
             return c.replace('version', browser);
           });
@@ -105,7 +114,8 @@
       }
 
       var engineVersion = (
-        (ua.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [0,'0'])[1] // From jQuery 1.2.6
+        // From jQuery 1.2.6
+        (ua.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/) || [0,'0'])[1]
       ).replace(/\./g, '_');
 
       $.each(['opera', 'applewebkit', 'gecko'], function () {
@@ -118,7 +128,8 @@
       // Deduplicate.  $.unique is only for DOM elements :-(
       var seen = {};
       classNames = $.map(classNames, function (c) {
-        if (seen[c] || c.match(/^mozilla/)) { // Mozilla so abused it's pretty much useless
+        // Mozilla so abused it's pretty much useless
+        if (seen[c] || c.match(/^mozilla/)) {
           return null;
         } else {
           seen[c] = true;
@@ -126,8 +137,9 @@
         }
       }).join(' ');
 
+      // Add to the html element now to avoid any FOUC
       var html = $('html');
-      html.addClass(classNames); // Add to the html element now to avoid any FOUC
+      html.addClass(classNames);
 
       $(function () {
         html.removeAttr('class');
