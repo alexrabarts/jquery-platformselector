@@ -142,7 +142,7 @@
       html.addClass(classNames);
 
       $(function () {
-        html.removeAttr('class');
+        html.removeClass(classNames);
         $('body').addClass(classNames);
       });
     }
