@@ -139,10 +139,17 @@
 
       // Add to the html element now to avoid any FOUC
       var html = $('html');
+      var class_check = html.attr('class');
       html.addClass(classNames);
 
       $(function () {
-        html.removeClass(classNames);
+        // Check whether html element had preexisting classes
+        if ( class_check ) {
+          html.removeClass(classNames);
+        } else {
+          html.removeAttr('class'); 
+        }
+        
         $('body').addClass(classNames);
       });
     }
