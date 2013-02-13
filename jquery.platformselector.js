@@ -139,17 +139,17 @@
 
       // Add to the html element now to avoid any FOUC
       var html = $('html');
-      var class_check = html.attr('class');
       html.addClass(classNames);
 
       $(function () {
-        // Check whether html element had preexisting classes
-        if ( class_check ) {
-          html.removeClass(classNames);
-        } else {
-          html.removeAttr('class'); 
-        }
+        // Remove our platform specific classes
+        html.removeClass(classNames);
         
+        // Check whether html element had preexisting classes
+        if (!html.attr('class'))
+          html.removeAttr('class');
+        
+        // Add our platform specific classes to body
         $('body').addClass(classNames);
       });
     }
