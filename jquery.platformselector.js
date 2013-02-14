@@ -1,21 +1,12 @@
 /*
  * platformSelector: a jQuery plugin
  *
- * platformSelector is a simple jQuery plugin that adds classes to the body
- * element representing the browser's environment.  It adds classes for browser
- * type, browser version, operating system, rendering engine and JS-enabled.
- *
  * For full documentation, visit:
  * http://github.com/alexrabarts/jquery-platformselector
  *
  * Licensed under the MIT:
  * http://www.opensource.org/licenses/mit-license.php
  *
- * Copyright (c) 2011 Stateless Systems (http://statelesssystems.com)
- *
- * @author   Alex Rabarts (alexrabarts -at- gmail -dawt- com)
- * @requires jQuery v1.2 or later
- * @version  0.3
  */
 
 (function ($) {
