@@ -1,3 +1,7 @@
+=== 1.0.0 / 2013-02-14
+
+* Added jQuery plugins manifest
+
 === 0.3 / 2013-02-14
 
 * Fixed an issue relating to class names already applied to the HTML element
