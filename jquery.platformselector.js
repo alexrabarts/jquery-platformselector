@@ -142,7 +142,14 @@
       html.addClass(classNames);
 
       $(function () {
-        html.removeAttr('class');
+        // Remove our platform specific classes
+        html.removeClass(classNames);
+        
+        // Check whether html element had preexisting classes
+        if (!html.attr('class'))
+          html.removeAttr('class');
+        
+        // Add our platform specific classes to body
         $('body').addClass(classNames);
       });
     }
