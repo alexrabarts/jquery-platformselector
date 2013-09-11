@@ -1,0 +1,27 @@
+{
+  "name": "jquery-platformselector",
+  "version": "1.0.0",
+  "homepage": "https://github.com/alexrabarts/jquery-platformselector",
+  "authors": [
+    "Alex Rabarts <alexrabarts@gmail.com>"
+  ],
+  "description": "platformSelector is a simple jQuery plugin that adds classes to the body element representing the browser's environment.  It adds classes for browser type, browser version, operating system, rendering engine and JS-enabled.",
+  "main": "jquery.platformselector.js",
+  "keywords": [
+    "jquery",
+    "platform",
+    "device",
+    "os",
+    "mobile",
+    "useragent",
+    "browser"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
